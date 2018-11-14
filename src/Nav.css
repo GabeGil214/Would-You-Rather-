@@ -1,0 +1,19 @@
+.nav-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-header.text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-links {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
