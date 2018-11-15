@@ -12,8 +12,8 @@ class App extends Component {
         <Nav />
         {/*Create Routes for each of these components*/}
         <Home />
-        <NewQuestion />
-        <Question />
+        {/*<NewQuestion />*/}
+        {/*<Question />*/}
       </div>
     );
   }

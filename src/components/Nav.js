@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../Nav.css'
 
 class Nav extends Component {
   render() {
@@ -7,7 +8,7 @@ class Nav extends Component {
         <div className='user-info-container'>
           <div className='user-image'>
           </div>
-          <div>
+          <div className='text-container'>
             <p>Username</p>
             <a>Logout</a>
           </div>

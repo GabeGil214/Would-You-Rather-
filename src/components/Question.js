@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 
 class Question extends Component {
-  state = {
-    preview: true
-  }
 
   render() {
-    const { preview } = this.state
+    const { preview } = this.props
 
     return (
-      <div>
+      <div className="question-container">
         This is a Question?
         {!preview && (
           <div>
             This is a full question.
+            <button>Option A</button>
+            <button>Option B</button>
           </div>
         ) }
       </div>

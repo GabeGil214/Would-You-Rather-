@@ -5,9 +5,9 @@ class QuestionList extends Component {
   render() {
     return (
       <div>
-        <Question />
-        <Question />
-        <Question />
+        <Question preview={false}/>
+        <Question preview={true}/>
+        <Question preview={true}/>
       </div>
     )
   }
