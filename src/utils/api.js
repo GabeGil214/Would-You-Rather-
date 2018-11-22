@@ -19,6 +19,6 @@ export function saveLikeToggle (info) {
   return _saveLikeToggle(info)
 }
 
-export function _saveQuestion (info) {
+export function saveQuestion (info) {
   return _saveQuestion(info)
 }

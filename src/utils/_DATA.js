@@ -46,7 +46,7 @@ let users = {
   },
   kendrick_lamar: {
     id: "kendrick_lamar",
-    name: "Kendrick Lamar"",
+    name: "Kendrick Lamar",
     avatarURL: "",
     questions: []
   }

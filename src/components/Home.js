@@ -1,14 +1,26 @@
 import React, { Component } from 'react'
-import QuestionList from './QuestionList'
+import Question from './Question'
+import { connect } from 'react-redux'
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <QuestionList />
+        <ul>
+          {this.props.questionIds.map((id) => (
+            <Question key={id} id={id}/>
+          ))}
+        </ul>
       </div>
     )
   }
 }
 
-export default Home
+function mapStateToProps ({ questions }) {
+  return {
+    questionIds: Object.keys(questions)
+      .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+  }
+}
+
+export default connect(mapStateToProps)(Home)

@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
+import { formatQuestion } from '../utils/helpers'
+import { connect } from 'react-redux'
 
 class Question extends Component {
 
   render() {
-    const { preview } = this.props
+    const { question, preview } = this.props
+
+    const { content } = question
 
     return (
       <div className="question-container">
         This is a Question?
         {!preview && (
           <div>
-            This is a full question.
-            <button>Option A</button>
-            <button>Option B</button>
+            Would You Rather
+            <button>{content.A}</button>
+            <button>{content.B}</button>
           </div>
         ) }
       </div>
@@ -20,4 +24,14 @@ class Question extends Component {
   }
 }
 
-export default Question
+function mapStateToProps ({ questions, users, authedUser }, {id}) {
+  const question = questions[id]
+
+  return {
+    question: question ?
+    formatQuestion(question, users[question.author], authedUser )
+    : null
+  }
+}
+
+export default connect(mapStateToProps)(Question)

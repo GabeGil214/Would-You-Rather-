@@ -1,8 +1,8 @@
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 
 export function receiveQuestions (questions) {
-  return (
+  return {
     type: RECEIVE_QUESTIONS,
     questions,
-  )
+  }
 }
