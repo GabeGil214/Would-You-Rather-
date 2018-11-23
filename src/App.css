@@ -39,3 +39,17 @@
   border: solid 2px rgba(85,85,85,0.6);
 
 }
+
+.new-question-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.new-question-title h2 {
+  width: 65%;
+  position: relative;
+  margin: 0 auto;
+  top: 42%;
+}
