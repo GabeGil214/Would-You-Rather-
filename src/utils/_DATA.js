@@ -8,9 +8,8 @@ let questions = {
     author: "gabe_gil",
     timestamp: 1518043995650,
     votes: {
-      total: 5,
-      A: 3,
-      B: 2
+      A: ['barack_obama', 'kendrick_lamar', 'leslie_jones'],
+      B: ['mark_hamill', 'john_mayer']
     },
     likes: ['barack_obama','kendrick_lamar']
   },
@@ -23,9 +22,8 @@ let questions = {
     author: "barack_obama",
     timestamp: 1518122597860,
     votes: {
-      total: 4,
-      A: 1,
-      B: 3
+      A: ['john_mayer'],
+      B: ['barack_obama', 'leslie_jones', 'mark_hamill']
     },
     likes: ['kendrick_lamar']
   }
@@ -74,9 +72,8 @@ function formatQuestion ({ author, contentA, contentB }) {
     id: generateUID(),
     likes: [],
     votes: {
-      total: 0,
-      A: 0,
-      B: 0
+      A: [],
+      B: []
     },
     content: {
       A: contentA,
@@ -128,5 +125,24 @@ export function _saveLikeToggle ({ id, hasLiked, authedUser }) {
 
       res()
     }, 500)
+  })
+}
+
+export function _saveVoteToggle ({ id, hasVoted, authedUser, vote }) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      questions = {
+        ...questions,
+        [id]: {
+          ...questions[id],
+          votes: {
+            ...questions[id].votes,
+            [vote]: hasVoted === true
+              ? questions[id].votes[vote].filter((uid) => uid !== authedUser)
+              : questions[id].votes[vote].concat([authedUser])
+          }
+        }
+      }
+    })
   })
 }

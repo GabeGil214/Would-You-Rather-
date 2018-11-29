@@ -3,6 +3,7 @@ import {
   _getQuestions,
   _saveLikeToggle,
   _saveQuestion,
+  _saveVoteToggle
 } from './_DATA.js'
 
 export function getInitialData () {
@@ -21,4 +22,8 @@ export function saveLikeToggle (info) {
 
 export function saveQuestion (info) {
   return _saveQuestion(info)
+}
+
+export function saveVoteToggle (info) {
+  return _saveVoteToggle(info)
 }

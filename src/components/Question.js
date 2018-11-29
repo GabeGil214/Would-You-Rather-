@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { formatQuestion } from '../utils/helpers'
 import { connect } from 'react-redux'
-import { handleToggleQuestion } from '../actions/questions'
+import { handleToggleQuestion, handleUserVote } from '../actions/questions'
 
 class Question extends Component {
   handleLike = (e) => {
@@ -16,10 +16,23 @@ class Question extends Component {
     }))
   }
 
+  handleVote = (e) => {
+    e.preventDefault()
+
+    const { dispatch, question, authedUser } = this.props
+
+    dispatch(handleUserVote({
+      id: question.id,
+      vote: e.target.value,
+      authedUser,
+      hasVoted: question.hasVoted
+    }))
+  }
+
   render() {
     const { question, preview } = this.props
 
-    const { content, likes } = question
+    const { content, likes, votes } = question
 
     return (
       <div className="question-container">
@@ -27,8 +40,18 @@ class Question extends Component {
         {!preview && (
           <div>
             Would You Rather
-            <button>{content.A}</button>
-            <button>{content.B}</button>
+            <button
+              onClick={this.handleVote}
+              value="A">
+              {content.A}
+            </button>
+            <span>{votes.A}</span>
+            <button
+              onClick={this.handleVote}
+              value="B">
+              {content.B}
+            </button>
+            <span>{votes.B}</span>
             <p>Likes: {likes}</p>
             <button className="like-btn" onClick={this.handleLike}>Like</button>
           </div>
@@ -42,6 +65,7 @@ function mapStateToProps ({ questions, users, authedUser }, {id}) {
   const question = questions[id]
 
   return {
+    authedUser,
     question: question ?
     formatQuestion(question, users[question.author], authedUser )
     : null

@@ -1,28 +1,43 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { handleAddQuestion } from '../actions/questions'
 
 class NewQuestion extends Component {
   state = {
-    text: '',
+    textA: '',
+    textB: ''
   }
   handleChange = (e) => {
+    const name = e.target.name
     const text = e.target.value
+    if(name === 'textA'){
+      this.setState({
+        textA: text
+      })
+    } else {
+      this.setState({
+        textB: text
+      })
+    }
 
-    this.setState(() => ({
-      text
-    }))
   }
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const { text } = this.state
+    const { textA, textB } = this.state
+    const { dispatch, id } = this.props
 
     //todo: add question to createStore
+    dispatch(handleAddQuestion(textA, textB, id))
 
     this.setState({
-      text: '',
+      textA: '',
+      textB: ''
     })
+
   }
   render(){
+    const { textA, textB }  = this.state
     return (
       <div>
         <h3>New question</h3>
@@ -30,18 +45,33 @@ class NewQuestion extends Component {
           <div className="new-question-title">
             <h2>Would You Rather...</h2>
           </div>
-          <form>
+          <form className='new-question' onSubmit={this.handleSubmit}>
             <div>
-              <h4>Option A:</h4>
-              <textarea>
+              <textarea
+                name="textA"
+                placeholder="..win $5 million now?"
+                value={textA}
+                onChange={this.handleChange}
+                className='textarea'
+                maxLength={180}>
               </textarea>
             </div>
+            <h4>Or..</h4>
             <div>
-              <h4>Option B:</h4>
-              <textarea>
+              <textarea
+                name="textB"
+                placeholder="...$10,000 every week for life?"
+                value={textB}
+                onChange={this.handleChange}
+                className='textarea'
+                maxLength={180}>
               </textarea>
             </div>
-            <button type="submit">Add Question</button>
+            <button
+              type="submit"
+              >
+              Add Question
+            </button>
           </form>
         </div>
       </div>
@@ -49,4 +79,4 @@ class NewQuestion extends Component {
   }
 }
 
-export default NewQuestion
+export default connect()(NewQuestion)

@@ -7,6 +7,7 @@ export function formatDate (timestamp) {
 export function formatQuestion (question, author, authedUser) {
   const { id, likes, votes, content, timestamp } = question
   const { name, avatarURL } = author
+  let totalVotes = votes.A.concat(votes.B)
 
   return {
     name,
@@ -15,7 +16,11 @@ export function formatQuestion (question, author, authedUser) {
     content,
     avatar: avatarURL,
     likes: likes.length,
-    votes,
+    votes: {
+      A: votes.A.length,
+      B: votes.B.length
+    },
     hasLiked: likes.includes(authedUser),
+    hasVoted: totalVotes.includes(authedUser)
   }
 }
