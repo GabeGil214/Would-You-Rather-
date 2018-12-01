@@ -34,19 +34,22 @@ let users = {
       id: "gabe_gil",
       name: "Gabe Gil",
       avatarURL: "",
-      questions: []
+      questions: [1],
+      voteCount: []
     },
   barack_obama: {
     id: "barack_obama",
     name: "Barack Obama",
     avatarURL: "",
-    questions: []
+    questions: [2],
+    voteCount: [1,2]
   },
   kendrick_lamar: {
     id: "kendrick_lamar",
     name: "Kendrick Lamar",
     avatarURL: "",
-    questions: []
+    questions: [],
+    voteCount: [1,2]
   }
 }
 
@@ -130,6 +133,8 @@ export function _saveLikeToggle ({ id, hasLiked, authedUser }) {
 
 export function _saveVoteToggle ({ id, hasVoted, authedUser, vote }) {
   return new Promise((res, rej) => {
+
+    const questionID =
     setTimeout(() => {
       questions = {
         ...questions,
@@ -141,6 +146,16 @@ export function _saveVoteToggle ({ id, hasVoted, authedUser, vote }) {
               ? questions[id].votes[vote].filter((uid) => uid !== authedUser)
               : questions[id].votes[vote].concat([authedUser])
           }
+        }
+      }
+
+      users = {
+        ...users,
+        [authedUser]: {
+          ...users[authedUser],
+          voteCount: hasVoted === true
+            ? users[authedUser].voteCount.filter((qid) => qid !== id)
+            : users[authedUser].voteCount.concat([id])
         }
       }
     })

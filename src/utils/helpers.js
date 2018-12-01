@@ -18,9 +18,22 @@ export function formatQuestion (question, author, authedUser) {
     likes: likes.length,
     votes: {
       A: votes.A.length,
-      B: votes.B.length
+      B: votes.B.length,
+      totalVotes: totalVotes.length
     },
     hasLiked: likes.includes(authedUser),
     hasVoted: totalVotes.includes(authedUser)
+  }
+}
+
+export function formatUser (user, authedUser) {
+  const { name, avatar, voteCount, questions } = user
+
+  return {
+    name,
+    avatar,
+    votes: voteCount.length,
+    questions: questions.length,
+    currentUser: (user === authedUser)
   }
 }

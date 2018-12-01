@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
+import Leaderboard from './Leaderboard'
 
 class App extends Component {
   componentDidMount() {
@@ -25,7 +26,7 @@ class App extends Component {
               : <div>
               <Route path='/' exact component={Home} />
               <Route path='/new' component={NewQuestion} />
-              {/*<Question />*/}
+              <Route path='/leaderboard' component={Leaderboard} />
             </div> }
           </div>
         </Fragment>
