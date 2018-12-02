@@ -161,3 +161,23 @@ export function _saveVoteToggle ({ id, hasVoted, authedUser, vote }) {
     })
   })
 }
+
+export function _newUser ({ user }) {
+  return new Promise((res, rej) => {
+    const formattedUser = formatUser({
+      author,
+      contentA,
+      contentB
+    })
+
+    setTimeout(() => {
+      users = {
+        ...users,
+        [formattedUser.id]: formattedUser,
+      }
+    }
+
+      res(formattedQuestion)
+    }, 1000)
+  })
+}

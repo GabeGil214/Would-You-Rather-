@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import '../App.css';
 import Home from './Home'
+import Login from './Login'
 import NewQuestion from './NewQuestion'
 import Question from './Question'
 import Nav from './Nav'
@@ -24,7 +25,8 @@ class App extends Component {
             {this.props.loading === true
               ? null
               : <div>
-              <Route path='/' exact component={Home} />
+              <Route path='/' exact component={Login} />
+              <Route path='home' component={Home} />
               <Route path='/new' component={NewQuestion} />
               <Route path='/leaderboard' component={Leaderboard} />
             </div> }

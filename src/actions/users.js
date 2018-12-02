@@ -1,6 +1,7 @@
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const USER_POST = 'USER_POST'
 export const USER_VOTE = 'USER_VOTE'
+export const ADD_USER = 'ADD_USER'
 
 export function receiveUsers(users) {
   return {
@@ -14,6 +15,15 @@ export function userVote(user, questionID){
     type: USER_VOTE,
     user,
     questionID
+  }
+}
+
+export function addUser(user){
+  return {
+    type: ADD_USER,
+    name: user.name,
+    avatarURL: user.img,
+    id: user.id
   }
 }
 

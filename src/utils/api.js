@@ -27,3 +27,7 @@ export function saveQuestion (info) {
 export function saveVoteToggle (info) {
   return _saveVoteToggle(info)
 }
+
+export function newUser (user) {
+  return _newUser(user)
+}
