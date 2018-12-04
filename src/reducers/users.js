@@ -1,4 +1,4 @@
-import { USER_VOTE, USER_POST, RECEIVE_USERS } from '../actions/users'
+import { USER_VOTE, USER_POST, RECEIVE_USERS, ADD_USER } from '../actions/users'
 
 export default function users (state = {}, action) {
   switch(action.type) {
@@ -18,12 +18,18 @@ export default function users (state = {}, action) {
         }
       }
     case USER_POST :
+      console.log(action.user)
       return {
         ...state,
         [action.user]: {
           ...action.user,
           questions: action.user.questions.concat(action.questionID)
         }
+      }
+    case ADD_USER :
+      return {
+        ...state,
+        [action.user.id]: action.user
       }
     default:
       return state

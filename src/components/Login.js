@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import { GoogleLogin } from 'react-google-login'
+import { handleUserLogin } from '../actions/shared'
+import { connect } from 'react-redux'
 
 class Login extends Component {
   responseGoogle = (response) => {
     console.log(response)
   }
-  handleUserLogin = (response) => {
+  handleLogin = (response) => {
     const { dispatch, users } = this.props
-    const googleProfile = response.profile
+    const googleProfile = response.profileObj
 
-    dispatch(userLogin(googleProfile, users))
+    dispatch(handleUserLogin(googleProfile, users))
   }
   render() {
     return (
@@ -17,11 +19,17 @@ class Login extends Component {
         <GoogleLogin
           clientId="576570629915-87hr2jdpq9vi50fjil4ib7k3f02r8ch7.apps.googleusercontent.com"
           buttonText="Login"
-          onSuccess={this.handleUserLogin}
+          onSuccess={this.handleLogin}
           onFailure={this.responseGoogle}/>
       </div>
     )
   }
 }
 
-export default Login
+function mapStateToProps({ users }){
+  return {
+    users,
+  }
+}
+
+export default connect(mapStateToProps)(Login)

@@ -3,6 +3,7 @@ import {
   _getQuestions,
   _saveLikeToggle,
   _saveQuestion,
+  _saveUser,
   _saveVoteToggle
 } from './_DATA.js'
 
@@ -28,6 +29,6 @@ export function saveVoteToggle (info) {
   return _saveVoteToggle(info)
 }
 
-export function newUser (user) {
-  return _newUser(user)
+export function saveUser (user) {
+  return _saveUser(user)
 }

@@ -26,7 +26,7 @@ class App extends Component {
               ? null
               : <div>
               <Route path='/' exact component={Login} />
-              <Route path='home' component={Home} />
+              <Route path='/home' component={Home} />
               <Route path='/new' component={NewQuestion} />
               <Route path='/leaderboard' component={Leaderboard} />
             </div> }

@@ -21,9 +21,7 @@ export function userVote(user, questionID){
 export function addUser(user){
   return {
     type: ADD_USER,
-    name: user.name,
-    avatarURL: user.img,
-    id: user.id
+    user,
   }
 }
 

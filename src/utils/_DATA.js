@@ -162,22 +162,26 @@ export function _saveVoteToggle ({ id, hasVoted, authedUser, vote }) {
   })
 }
 
-export function _newUser ({ user }) {
+export function _saveUser (user) {
   return new Promise((res, rej) => {
-    const formattedUser = formatUser({
-      author,
-      contentA,
-      contentB
-    })
+    const formattedUser = formatUser(user)
 
     setTimeout(() => {
       users = {
         ...users,
         [formattedUser.id]: formattedUser,
       }
-    }
-
-      res(formattedQuestion)
+      res(formattedUser)
     }, 1000)
   })
+}
+
+function formatUser (profile) {
+  return {
+    id: profile.givenName.toLowerCase() + "_" + profile.familyName.toLowerCase(),
+    name: profile.name,
+    avatarURL: profile.imageURL,
+    questions: [],
+    voteCount: []
+  }
 }

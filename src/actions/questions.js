@@ -1,5 +1,6 @@
 import { saveLikeToggle, saveQuestion, saveVoteToggle } from '../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading'
+import { userPost } from './users'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const TOGGLE_QUESTION = 'TOGGLE_QUESTION'
@@ -44,7 +45,8 @@ function addQuestion (question){
 
 export function handleAddQuestion (contentA, contentB) {
   return (dispatch, getState) => {
-    const { authedUser } = getState()
+    const { authedUser, users } = getState()
+    const userObj = users[authedUser]
 
     dispatch(showLoading())
 
@@ -53,7 +55,10 @@ export function handleAddQuestion (contentA, contentB) {
       contentA,
       contentB
     })
-    .then((question) => dispatch(addQuestion(question)))
+    .then((question) => {
+      dispatch(userPost(userObj, question.id))
+      dispatch(addQuestion(question))
+    })
     .then(() => dispatch(hideLoading()))
   }
 }

@@ -15,7 +15,7 @@ class Nav extends Component {
           </div>
         </div>
         <div className='nav-links'>
-          <NavLink to="/" exact activeClassName="active">Home</NavLink>
+          <NavLink to="/home" exact activeClassName="active">Home</NavLink>
           <NavLink to="/new" activeClassName="active">New question</NavLink>
           <NavLink to="/leaderboard" activeClassName="active">Leaderboard</NavLink>
         </div>
