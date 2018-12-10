@@ -8,8 +8,8 @@ class Leaderboard extends Component {
      return (
        <div>
          {sortedUsers.map((id) => (
-           <div>
-             <User id={id} key={id} />
+           <div key={id}>
+             <User id={id} />
            </div>
          ))}
        </div>

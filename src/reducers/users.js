@@ -10,18 +10,17 @@ export default function users (state = {}, action) {
     case USER_VOTE :
       return {
         ...state,
-        [action.user]: {
+        [action.user.id]: {
           ...action.user,
-          voteCount: action.user.voteCount.includes(action.questionID)
-            ? action.user.voteCount.filter((id) => id !== action.questionID)
+          voteCount: action.user.voteCount.includes(action.id)
+            ? action.user.voteCount.filter((id) => id !== action.id)
             : action.user.voteCount.concat(action.questionID)
         }
       }
     case USER_POST :
-      console.log(action.user)
       return {
         ...state,
-        [action.user]: {
+        [action.user.id]: {
           ...action.user,
           questions: action.user.questions.concat(action.questionID)
         }

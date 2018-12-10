@@ -28,7 +28,6 @@ export function handleUserLogin (googleProfile, users) {
 
     } else {
       dispatch(setAuthedUser(loginID))
-
       return saveUser(googleProfile)
         .then((user) => {
           dispatch(addUser(user))

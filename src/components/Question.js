@@ -36,24 +36,29 @@ class Question extends Component {
 
     return (
       <div className="question-container">
-        This is a Question?
         {!preview && (
           <div>
-            Would You Rather
-            <button
-              onClick={this.handleVote}
-              value="A">
-              {content.A}
-            </button>
-            <span>{votes.A}</span>
-            <button
-              onClick={this.handleVote}
-              value="B">
-              {content.B}
-            </button>
-            <span>{votes.B}</span>
+            <h2>Would You Rather...</h2>
+            <div className="answer-window">
+              <div className="answer-container answerA">
+                <p>{votes.A}</p>
+                <button
+                  onClick={this.handleVote}
+                  value="A">
+                  {content.A}
+                </button>
+              </div>
+              <div className="answer-container answerB">
+                <p>{votes.B}</p>
+                <button
+                  onClick={this.handleVote}
+                  value="B">
+                  {content.B}
+                </button>
+              </div>
+            </div>
             <p>Likes: {likes}</p>
-            <button className="like-btn" onClick={this.handleLike}>Like</button>
+            <button className="btn" onClick={this.handleLike}>Like</button>
           </div>
         ) }
       </div>

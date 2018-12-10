@@ -10,15 +10,26 @@ import { connect } from 'react-redux'
      const { name, avatar, votes, questions, currentUser } = user
 
      return (
-       <div>
-         <div>
-           <img src={avatar} />
+       <div className="profile-container">
+         <div className="user-info-container">
+           <div className="user-image">
+             <img src={user.avatarURL} height="50" width="50"/>
+           </div>
            <p>{user.name}</p>
          </div>
-         <div>
-           <p>Score:</p>
-           <p>{votes}</p>
-           <p>{questions}</p>
+         <div className="scores-container">
+           <div>
+             <p><strong>Votes</strong></p>
+             <p>{votes}</p>
+           </div>
+           <div>
+             <p><strong>Questions posted</strong></p>
+             <p>{questions}</p>
+           </div>
+           <div>
+             <p><strong>Total</strong></p>
+             <p>{questions + votes}</p>
+           </div>
          </div>
        </div>
      )
@@ -27,6 +38,7 @@ import { connect } from 'react-redux'
 
  function mapStateToProps ({ users, authedUser }, {id}) {
    const user = users[id]
+   console.log(user)
 
    return {
      authedUser,

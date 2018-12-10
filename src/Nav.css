@@ -9,6 +9,7 @@
 }
 
 .nav-links {
+  font-family: 'Nunito', sans-serif;
   width: 80%;
   margin: 0 auto;
   padding-top: 50px;
@@ -16,4 +17,32 @@
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #212121;
+}
+
+.nav-links a:hover {
+  color: #CB4395;
+}
+
+.user-info-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logout-button {
+  max-width: 100px;
+  height: auto;
+}
+.user-info-container img {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+  margin-right: 20px
 }

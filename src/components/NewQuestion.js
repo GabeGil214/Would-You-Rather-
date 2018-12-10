@@ -40,34 +40,36 @@ class NewQuestion extends Component {
     const { textA, textB }  = this.state
     return (
       <div>
-        <h3>New question</h3>
         <div className="new-question-container">
           <div className="new-question-title">
             <h2>Would You Rather...</h2>
           </div>
-          <form className='new-question' onSubmit={this.handleSubmit}>
-            <div>
-              <textarea
-                name="textA"
-                placeholder="..win $5 million now?"
-                value={textA}
-                onChange={this.handleChange}
-                className='textarea'
-                maxLength={180}>
-              </textarea>
-            </div>
-            <h4>Or..</h4>
-            <div>
-              <textarea
-                name="textB"
-                placeholder="...$10,000 every week for life?"
-                value={textB}
-                onChange={this.handleChange}
-                className='textarea'
-                maxLength={180}>
-              </textarea>
+          <form onSubmit={this.handleSubmit}>
+            <div className='new-question'>
+              <div>
+                <textarea
+                  name="textA"
+                  placeholder="..win $5 million now?"
+                  value={textA}
+                  onChange={this.handleChange}
+                  className='textarea'
+                  maxLength={180}>
+                </textarea>
+              </div>
+              <p><strong>Or...</strong></p>
+              <div>
+                <textarea
+                  name="textB"
+                  placeholder="...$10,000 every week for life?"
+                  value={textB}
+                  onChange={this.handleChange}
+                  className='textarea'
+                  maxLength={180}>
+                </textarea>
+              </div>
             </div>
             <button
+              className="btn"
               type="submit"
               >
               Add Question

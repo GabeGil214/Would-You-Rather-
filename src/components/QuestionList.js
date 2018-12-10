@@ -4,12 +4,21 @@ import Question from './Question'
 
 //This is a container component
 class QuestionList extends Component {
+  this.state = {
+    answered: false
+  }
   render() {
+    const { answered } = this.state
+
     return (
       <div>
-        <Question preview={false}/>
-        <Question preview={true}/>
-        <Question preview={true}/>
+        {answered
+        ? this.props.answeredIds.map((id) => (
+          <Question key={id} id={id}/>
+        ))
+        : this.props.unansweredIds.map((id) => (
+          <Question key={id} id={id}/>
+        ))}
       </div>
     )
   }

@@ -5,7 +5,7 @@ let questions = {
       A: "be President?",
       B: "be a Celebrity?"
     },
-    author: "gabe_gil",
+    author: "james_franco",
     timestamp: 1518043995650,
     votes: {
       A: ['barack_obama', 'kendrick_lamar', 'leslie_jones'],
@@ -30,24 +30,24 @@ let questions = {
 }
 
 let users = {
-  gabe_gil: {
-      id: "gabe_gil",
-      name: "Gabe Gil",
-      avatarURL: "",
+  james_franco: {
+      id: "james_franco",
+      name: "James Franco",
+      avatarURL: "https://m.media-amazon.com/images/M/MV5BMjA4MzMzNDM5MF5BMl5BanBnXkFtZTgwMjQ0MDk0NDM@._V1_.jpg",
       questions: [1],
       voteCount: []
     },
   barack_obama: {
     id: "barack_obama",
     name: "Barack Obama",
-    avatarURL: "",
+    avatarURL: "https://images-na.ssl-images-amazon.com/images/I/81Y3JFPfpQL._SY450_.jpg",
     questions: [2],
     voteCount: [1,2]
   },
   kendrick_lamar: {
     id: "kendrick_lamar",
     name: "Kendrick Lamar",
-    avatarURL: "",
+    avatarURL: "https://upload.wikimedia.org/wikipedia/commons/3/32/Pulitzer2018-portraits-kendrick-lamar.jpg",
     questions: [],
     voteCount: [1,2]
   }
@@ -132,9 +132,9 @@ export function _saveLikeToggle ({ id, hasLiked, authedUser }) {
 }
 
 export function _saveVoteToggle ({ id, hasVoted, authedUser, vote }) {
+  console.log(id)
   return new Promise((res, rej) => {
 
-    const questionID =
     setTimeout(() => {
       questions = {
         ...questions,
@@ -158,7 +158,7 @@ export function _saveVoteToggle ({ id, hasVoted, authedUser, vote }) {
             : users[authedUser].voteCount.concat([id])
         }
       }
-    })
+    }, 500)
   })
 }
 
@@ -180,7 +180,7 @@ function formatUser (profile) {
   return {
     id: profile.givenName.toLowerCase() + "_" + profile.familyName.toLowerCase(),
     name: profile.name,
-    avatarURL: profile.imageURL,
+    avatarURL: profile.imageUrl,
     questions: [],
     voteCount: []
   }

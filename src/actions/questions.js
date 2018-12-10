@@ -1,6 +1,6 @@
 import { saveLikeToggle, saveQuestion, saveVoteToggle } from '../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading'
-import { userPost } from './users'
+import { userPost, userVote } from './users'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const TOGGLE_QUESTION = 'TOGGLE_QUESTION'
@@ -74,14 +74,18 @@ function voteQuestion ({id, vote, authedUser, hasVoted}) {
 }
 
 export function handleUserVote (info) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch(voteQuestion(info))
+    const id = info.id
+    const { users } = getState()
+    const user = users[info.authedUser]
+    dispatch(userVote(user, id))
 
     return saveVoteToggle(info)
       .catch((e) => {
-        console.warn('Error in handleToggleQuestion: ', e)
-        dispatch(toggleQuestion(info))
-        alert('There was an error liking the question.')
+        console.warn('Error in handleUserVote: ', e)
+        dispatch(voteQuestion(info))
+        alert('There was an error voting for this question.')
       })
   }
 }
