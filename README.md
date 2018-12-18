@@ -1,16 +1,16 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Would You Rather...?
+
+This project asks users to select the better of two options and allows them to compare their responses
+with other users. Users can also create their own questions and track their activity in the leaderboard section.
+
+## Get Up and running
+
+From the project directory, run `npm install` to install the dependencies, follow by `npm start` to start the server.
+Project will be available at [http://localhost:3000](http://localhost:3000)
 
 ## Available Scripts
 
 In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
 ### `npm test`
 
