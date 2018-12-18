@@ -4,6 +4,7 @@ import Home from './Home'
 import Login from './Login'
 import NewQuestion from './NewQuestion'
 import Question from './Question'
+import QuestionPage from './QuestionPage'
 import Nav from './Nav'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -29,6 +30,7 @@ class App extends Component {
                   <Nav />
                   <div>
                     <Route exact path='/' component={Home} />
+                    <Route path='/question/:id' component={QuestionPage} />
                     <Route path='/add' component={NewQuestion} />
                     <Route path='/leaderboard' component={Leaderboard} />
                   </div>
@@ -37,7 +39,6 @@ class App extends Component {
           </div>
         </Fragment>
       </Router>
-
     );
   }
 }

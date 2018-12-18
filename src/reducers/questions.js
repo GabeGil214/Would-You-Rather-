@@ -23,6 +23,8 @@ export default function questions (state = {}, action) {
         [action.question.id]: action.question
       }
     case VOTE_QUESTION :
+      console.log(state[action.id])
+      console.log(action.vote)
       return {
         ...state,
         [action.id]: {

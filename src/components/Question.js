@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { formatQuestion } from '../utils/helpers'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { handleToggleQuestion, handleUserVote } from '../actions/questions'
 
 class Question extends Component {
@@ -32,36 +33,70 @@ class Question extends Component {
   render() {
     const { question, preview } = this.props
 
-    const { content, likes, votes } = question
+    const { content, likes, votes, id, hasVoted, response, avatar, name } = question
 
     return (
-      <div className="question-container">
-        {!preview && (
-          <div>
-            <h2>Would You Rather...</h2>
-            <div className="answer-window">
-              <div className="answer-container answerA">
-                <p>{votes.A}</p>
-                <button
-                  onClick={this.handleVote}
-                  value="A">
-                  {content.A}
-                </button>
+      <Link to={`/question/${id}`}>
+        <div className="question-container">
+          {!preview
+            ? <div>
+                <h2>Would You Rather...</h2>
+                <p>Submitted By:</p>
+                <img src={avatar} height='50' width='50' alt={name}/>
+                <div className="answer-window">
+                  <div className="answer-container answerA">
+                    <p>{votes.A}</p>
+                    {response === 'A'
+                    ? <Fragment>
+                        <button
+                          className="user-answer"
+                          onClick={this.handleVote}
+                          value="A">
+                          <span>{content.A}</span>
+                          <span>{(votes.A/votes.totalVotes) * 100}%</span>
+                        </button>
+                        <h4>Your answer</h4>
+                      </Fragment>
+                    : <button
+                        onClick={this.handleVote}
+                        value="A">
+                        <span>{content.A}</span>
+                        <span>{(votes.A/votes.totalVotes) * 100}%</span>
+                      </button>
+                    }
+                  </div>
+                  <div className="answer-container answerB">
+                    <p>{votes.B}</p>
+                      {response === 'B'
+                      ? <Fragment>
+                          <button
+                            className="user-answer"
+                            onClick={this.handleVote}
+                            value="B">
+                            <span>{content.B}</span>
+                            <span>{(votes.B/votes.totalVotes) * 100}%</span>
+                          </button>
+                          <h4>Your answer</h4>
+                        </Fragment>
+                      : <button
+                          onClick={this.handleVote}
+                          value="B">
+                          <span>{content.B}</span>
+                          <span>{(votes.B/votes.totalVotes) * 100}%</span>
+                        </button>
+                      }
+                  </div>
+                </div>
+                <p>Likes: {likes}</p>
+                <button className="btn" onClick={this.handleLike}>Like</button>
               </div>
-              <div className="answer-container answerB">
-                <p>{votes.B}</p>
-                <button
-                  onClick={this.handleVote}
-                  value="B">
-                  {content.B}
-                </button>
+            : <div>
+                <h2>Would You Rather {content.A} <span>OR</span> {content.B}</h2>
+                <p>Total Votes: {votes.totalVotes}</p>
               </div>
-            </div>
-            <p>Likes: {likes}</p>
-            <button className="btn" onClick={this.handleLike}>Like</button>
-          </div>
-        ) }
-      </div>
+            }
+        </div>
+      </Link>
     )
   }
 }

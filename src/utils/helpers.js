@@ -7,13 +7,25 @@ export function formatDate (timestamp) {
 export function formatQuestion (question, author, authedUser) {
   const { id, likes, votes, content, timestamp } = question
   const { name, avatarURL } = author
+
   let totalVotes = votes.A.concat(votes.B)
+  let response;
+
+  if(votes.A.includes(authedUser)){
+    response = 'A'
+  } else if (votes.B.includes(authedUser)) {
+    response = 'B'
+  } else {
+    response = null
+  }
+
 
   return {
     name,
     id,
     timestamp,
     content,
+    response,
     avatar: avatarURL,
     likes: likes.length,
     votes: {

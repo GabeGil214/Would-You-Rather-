@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Question from './Question'
 import { connect } from 'react-redux'
+import { formatQuestion } from '../utils/helpers'
 
 class Home extends Component {
   state = {
@@ -18,6 +19,7 @@ class Home extends Component {
       })
     }
   }
+
   render() {
     const { answered } = this.state
 
@@ -34,12 +36,20 @@ class Home extends Component {
           }
         </div>
         <div className="questions-container">
-          {!answered
+          {answered
           ? this.props.answeredIds.map((id) => (
-            <Question key={id} id={id}/>
+            <Question
+              key={id}
+              id={id}
+              preview={true}
+              />
           ))
           : this.props.unansweredIds.map((id) => (
-            <Question key={id} id={id}/>
+            <Question
+              key={id}
+              id={id}
+              preview={true}
+              />
           ))}
       </div>
       </div>
@@ -47,13 +57,23 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps ({ questions }) {
-  console.log(questions)
+function mapStateToProps ({ questions, authedUser, users }) {
   const questionIds = Object.keys(questions)
     .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
 
-  const unansweredIds = questionIds.filter((id) => questions[id].hasVoted === true)
-  const answeredIds = questionIds.filter((id) => questions[id].hasVoted !== true)
+  const unansweredIds = questionIds.filter(function(id){
+    const question = questions[id]
+
+    const formattedQuestion = formatQuestion(question, users[question.author], authedUser)
+    return formattedQuestion.hasVoted === false
+  })
+
+  const answeredIds = questionIds.filter(function(id){
+    const question = questions[id]
+
+    const formattedQuestion = formatQuestion(question, users[question.author], authedUser)
+    return formattedQuestion.hasVoted === true
+  })
 
   return {
     unansweredIds,

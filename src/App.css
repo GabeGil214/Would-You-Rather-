@@ -25,15 +25,6 @@ body {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .login-container {
   font-family: 'Nunito', sans-serif;
   font-size: 1.5em;
@@ -69,6 +60,11 @@ body {
   border-radius: 10px;
   border: solid .5px #CCCCCC;
   transition: 0.1s linear;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .question-container:hover, .profile-container:hover {
@@ -160,6 +156,10 @@ h1,h2,h3,h4,h5 {
   margin: 0 25px;
 }
 
+img {
+  border-radius: 50%;
+}
+
 .btn {
   height: 35px;
   border-radius: 2px;
@@ -167,4 +167,16 @@ h1,h2,h3,h4,h5 {
   width: auto;
   background-color: #1BA00D;
   color: #FEFEFE;
+}
+
+.answer-container button span {
+  display: block;
+}
+
+.user-answer {
+  background-color: #35A199 !important;
+}
+
+.answer-container h4 {
+  color: #35A199;
 }

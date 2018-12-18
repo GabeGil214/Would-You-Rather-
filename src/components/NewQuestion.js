@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
+import { Redirect } from 'react-router-dom'
 
 class NewQuestion extends Component {
   state = {
     textA: '',
-    textB: ''
+    textB: '',
+    toHome: false
   }
   handleChange = (e) => {
     const name = e.target.name
@@ -24,7 +26,7 @@ class NewQuestion extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const { textA, textB } = this.state
+    const { textA, textB, toHome } = this.state
     const { dispatch, id } = this.props
 
     //todo: add question to createStore
@@ -32,12 +34,17 @@ class NewQuestion extends Component {
 
     this.setState({
       textA: '',
-      textB: ''
+      textB: '',
+      toHome: true
     })
-
   }
   render(){
-    const { textA, textB }  = this.state
+    const { textA, textB, toHome }  = this.state
+
+    if (toHome === true) {
+      return <Redirect to='/' />
+    }
+
     return (
       <div>
         <div className="new-question-container">
