@@ -1,4 +1,4 @@
-#Would You Rather...?
+# Would You Rather...?
 
 This project asks users to select the better of two options and allows them to compare their responses
 with other users. Users can also create their own questions and track their activity in the leaderboard section.
