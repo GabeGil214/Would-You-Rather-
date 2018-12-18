@@ -3,10 +3,10 @@ import '../App.css';
 import Home from './Home'
 import Login from './Login'
 import NewQuestion from './NewQuestion'
-import Question from './Question'
 import QuestionPage from './QuestionPage'
 import Nav from './Nav'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import NoMatch from './NoMatch'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
@@ -28,12 +28,13 @@ class App extends Component {
               ? <Login />
               : <div>
                   <Nav />
-                  <div>
+                  <Switch>
                     <Route exact path='/' component={Home} />
                     <Route path='/question/:id' component={QuestionPage} />
                     <Route path='/add' component={NewQuestion} />
                     <Route path='/leaderboard' component={Leaderboard} />
-                  </div>
+                    <Route component={NoMatch} />
+                  </Switch>
                 </div>
             }
           </div>

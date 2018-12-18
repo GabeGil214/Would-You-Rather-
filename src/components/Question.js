@@ -8,7 +8,7 @@ class Question extends Component {
   handleLike = (e) => {
     e.preventDefault()
 
-    const { dispatch, users, question, authedUser } = this.props
+    const { dispatch, question, authedUser } = this.props
 
     dispatch(handleToggleQuestion({
       id: question.id,
@@ -21,10 +21,11 @@ class Question extends Component {
     e.preventDefault()
 
     const { dispatch, question, authedUser } = this.props
+    console.log(question)
 
     dispatch(handleUserVote({
       id: question.id,
-      vote: e.target.value,
+      vote: e.currentTarget.value,
       authedUser,
       hasVoted: question.hasVoted
     }))
@@ -33,7 +34,7 @@ class Question extends Component {
   render() {
     const { question, preview } = this.props
 
-    const { content, likes, votes, id, hasVoted, response, avatar, name } = question
+    const { content, likes, votes, id, response, avatar, name } = question
 
     return (
       <Link to={`/question/${id}`}>
@@ -53,15 +54,14 @@ class Question extends Component {
                           onClick={this.handleVote}
                           value="A">
                           <span>{content.A}</span>
-                          <span>{(votes.A/votes.totalVotes) * 100}%</span>
                         </button>
                         <h4>Your answer</h4>
+                        <h5>{Math.floor((votes.A/votes.totalVotes) * 100)}% of Users chose this answer</h5>
                       </Fragment>
                     : <button
                         onClick={this.handleVote}
                         value="A">
                         <span>{content.A}</span>
-                        <span>{(votes.A/votes.totalVotes) * 100}%</span>
                       </button>
                     }
                   </div>
@@ -74,15 +74,14 @@ class Question extends Component {
                             onClick={this.handleVote}
                             value="B">
                             <span>{content.B}</span>
-                            <span>{(votes.B/votes.totalVotes) * 100}%</span>
                           </button>
                           <h4>Your answer</h4>
+                          <h5>{Math.floor((votes.B/votes.totalVotes) * 100)}% of Users chose this answer</h5>
                         </Fragment>
                       : <button
                           onClick={this.handleVote}
                           value="B">
                           <span>{content.B}</span>
-                          <span>{(votes.B/votes.totalVotes) * 100}%</span>
                         </button>
                       }
                   </div>

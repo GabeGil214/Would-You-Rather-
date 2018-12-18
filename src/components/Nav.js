@@ -25,7 +25,7 @@ class Nav extends Component {
         <div className='user-info-container'>
           <div className='user-image'>
             { user && (
-                <img src={user.avatarURL} height='100' width='100' />
+                <img src={user.avatarURL} alt={user.id} height='100' width='100' />
             )}
           </div>
           <div className='text-container'>

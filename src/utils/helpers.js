@@ -39,13 +39,13 @@ export function formatQuestion (question, author, authedUser) {
 }
 
 export function formatUser (user, authedUser) {
-  const { name, avatarURL, voteCount, questions } = user
-
+  const { name, avatarURL, voteCount, questions, id } = user
+  console.log(voteCount)
   return {
     name,
     avatarURL,
     votes: voteCount.length,
     questions: questions.length,
-    currentUser: (user === authedUser)
+    currentUser: (id === authedUser)
   }
 }

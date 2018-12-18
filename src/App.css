@@ -177,6 +177,10 @@ img {
   background-color: #35A199 !important;
 }
 
-.answer-container h4 {
+.answer-container h4, .answer-container h5 {
   color: #35A199;
+}
+
+.profile-container.currentUser {
+  border: 3px #35A199 solid;
 }

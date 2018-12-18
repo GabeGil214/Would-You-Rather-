@@ -12,8 +12,8 @@ export default function users (state = {}, action) {
         ...state,
         [action.user.id]: {
           ...action.user,
-          voteCount: action.user.voteCount.includes(action.id)
-            ? action.user.voteCount.filter((id) => id !== action.id)
+          voteCount: action.user.voteCount.includes(action.questionID)
+            ? action.user.voteCount.filter((id) => id !== action.questionID)
             : action.user.voteCount.concat(action.questionID)
         }
       }

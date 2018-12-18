@@ -76,16 +76,16 @@ function voteQuestion ({id, vote, authedUser, hasVoted}) {
 export function handleUserVote (info) {
   return (dispatch, getState) => {
     dispatch(voteQuestion(info))
-    const id = info.id
+    const questionID = info.id
     const { users } = getState()
     const user = users[info.authedUser]
-    dispatch(userVote(user, id))
+    dispatch(userVote(user, questionID))
 
     return saveVoteToggle(info)
-      .catch((e) => {
+      /*.catch((e) => {
         console.warn('Error in handleUserVote: ', e)
         dispatch(voteQuestion(info))
         alert('There was an error voting for this question.')
-      })
+      })*/
   }
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { GoogleLogin } from 'react-google-login'
 import { handleUserLogin } from '../actions/shared'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 class Login extends Component {
   responseGoogle = (response) => {

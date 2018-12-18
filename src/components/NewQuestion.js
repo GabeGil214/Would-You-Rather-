@@ -26,7 +26,7 @@ class NewQuestion extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const { textA, textB, toHome } = this.state
+    const { textA, textB } = this.state
     const { dispatch, id } = this.props
 
     //todo: add question to createStore

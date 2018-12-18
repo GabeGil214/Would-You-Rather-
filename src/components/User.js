@@ -6,16 +6,21 @@ import { connect } from 'react-redux'
 
  class User extends Component {
    render() {
-     const { user, authedUser, id } = this.props
-     const { name, avatar, votes, questions, currentUser } = user
+     const { user } = this.props
+     const { name, avatarURL, votes, questions, currentUser } = user
+
+     let containerClass = "profile-container"
+     if(currentUser){
+       containerClass += " currentUser"
+     }
 
      return (
-       <div className="profile-container">
+       <div className={containerClass}>
          <div className="user-info-container">
            <div className="user-image">
-             <img src={user.avatarURL} height="50" width="50"/>
+             <img src={avatarURL} height="50" width="50"/>
            </div>
-           <p>{user.name}</p>
+           <p>{name}</p>
          </div>
          <div className="scores-container">
            <div>

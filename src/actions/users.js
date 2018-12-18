@@ -10,11 +10,11 @@ export function receiveUsers(users) {
   }
 }
 
-export function userVote(user, id){
+export function userVote(user, questionID){
   return {
     type: USER_VOTE,
     user,
-    id,
+    questionID,
   }
 }
 
@@ -29,6 +29,6 @@ export function userPost(user, questionID){
   return {
     type: USER_POST,
     user,
-    questionID
+    questionID,
   }
 }
