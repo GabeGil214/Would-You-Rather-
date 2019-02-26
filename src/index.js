@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
@@ -7,12 +7,16 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import middleware from './middleware'
 import * as serviceWorker from './serviceWorker';
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 const store = createStore(reducer, middleware)
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Fragment>
+      <CssBaseline/ >
+      <App />
+    </Fragment>
   </Provider>,
   document.getElementById('root')
 );
