@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Question from './Question'
 import { connect } from 'react-redux'
 import { formatQuestion } from '../utils/helpers'
+import Container from '@material-ui/core/Container';
 
 class Home extends Component {
   state = {
@@ -35,7 +36,7 @@ class Home extends Component {
               >View Unanswered Questions</button>
           }
         </div>
-        <div className="questions-container">
+        <Container maxWidth="sm">
           {answered
           ? this.props.answeredIds.map((id) => (
             <Question
@@ -51,7 +52,7 @@ class Home extends Component {
               preview={true}
               />
           ))}
-      </div>
+        </Container>
       </div>
     )
   }

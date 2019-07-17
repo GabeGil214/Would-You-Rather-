@@ -132,7 +132,6 @@ export function _saveLikeToggle ({ id, hasLiked, authedUser }) {
 }
 
 export function _saveVoteToggle ({ id, hasVoted, authedUser, vote }) {
-  console.log(id)
   return new Promise((res, rej) => {
 
     setTimeout(() => {
