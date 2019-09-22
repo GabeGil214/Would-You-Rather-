@@ -105,7 +105,8 @@ class Question extends Component {
           </Fragment>
           : <Link to={`/question/${id}`}>
               <div>
-                <Typography variant="h2">Would You Rather {content.A} <span>OR</span> {content.B}</Typography>
+                <Typography variant="h4">Would You Rather...</Typography>
+                <Typography variant="subtitle1">{content.A} <span>OR</span> {content.B}</Typography>
                 <Typography variant="subtitle1">Total Votes: {votes.totalVotes}</Typography>
               </div>
             </Link>
