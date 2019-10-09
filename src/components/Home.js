@@ -26,17 +26,17 @@ class Home extends Component {
 
     return (
       <div>
-        <div className="questionToggle">
-          {!answered
-            ? <button className="btn"
-              onClick={this.toggleState}
-              >View Answered Questions</button>
-            : <button className="btn"
-              onClick={this.toggleState}
-              >View Unanswered Questions</button>
-          }
-        </div>
         <Container maxWidth="sm">
+          <div className="questionToggle">
+            {!answered
+              ? <button className="btn"
+                onClick={this.toggleState}
+                >View Answered Questions</button>
+              : <button className="btn"
+                onClick={this.toggleState}
+                >View Unanswered Questions</button>
+            }
+          </div>    
           {answered
           ? this.props.answeredIds.map((id) => (
             <Question

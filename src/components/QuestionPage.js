@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Question from './Question'
 import { connect } from 'react-redux'
+import Container from '@material-ui/core/Container';
 
 
 //This is a container component
@@ -18,9 +19,9 @@ class QuestionPage extends Component {
     }
 
     return (
-      <div>
+      <Container maxWidth="sm">
         <Question key={id} id={id} preview={false}/>
-      </div>
+      </Container>
     )
   }
 }

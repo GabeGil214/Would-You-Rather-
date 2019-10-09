@@ -26,6 +26,10 @@ const useStyles = makeStyles(theme => ({
   hide: {
     display: 'none',
   },
+  noLink: {
+    color: theme.color,
+    textDecoration: 'none',
+  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -43,6 +47,7 @@ const useStyles = makeStyles(theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    marginTop: '5rem',
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
