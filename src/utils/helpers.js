@@ -40,7 +40,6 @@ export function formatQuestion (question, author, authedUser) {
 
 export function formatUser (user, authedUser) {
   const { name, avatarURL, voteCount, questions, id } = user
-  console.log(voteCount)
   return {
     name,
     avatarURL,

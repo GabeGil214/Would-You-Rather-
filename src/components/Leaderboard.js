@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
 import User from './User'
 import { connect } from 'react-redux'
+import Container from '@material-ui/core/Container';
+import useStyles from '../styles'
 
-class Leaderboard extends Component {
-   render() {
-     const { sortedUsers } = this.props
+function Leaderboard(props) {
+     const { sortedUsers } = props;
+     const classes = useStyles();
+
      return (
-       <div>
+       <Container maxWidth="sm">
          {sortedUsers.map((id) => (
            <div key={id}>
              <User id={id} />
            </div>
          ))}
-       </div>
+       </Container>
      )
-   }
  }
 
  function mapStateToProps ({ users }) {

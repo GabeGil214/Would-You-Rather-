@@ -35,8 +35,6 @@ function Nav(props) {
     }, 500)
   }
 
-
-
   return (
       <Fragment>
         <Divider />

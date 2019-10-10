@@ -1,32 +1,36 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { GoogleLogin } from 'react-google-login'
 import { handleUserLogin } from '../actions/shared'
 import { connect } from 'react-redux'
+import Container from '@material-ui/core/Container';
+import useStyles from '../styles'
 
-class Login extends Component {
-  responseGoogle = (response) => {
-    console.log(response)
+function Login(props) {
+  const classes = useStyles();
+
+  function responseGoogle(response) {
+    alert(response)
   }
-  handleLogin = (response) => {
-    const { dispatch } = this.props
-    let { users } = this.props
-    const googleProfile = response.profileObj
+
+  function handleLogin(response) {
+    const { dispatch } = props;
+    let { users } = props;
+    const googleProfile = response.profileObj;
 
     dispatch(handleUserLogin(googleProfile, users))
   }
-  render() {
-    return (
-      <div className="login-container">
+
+  return (
+      <Container maxWidth="sm" className={classes.middle}>
         <h1>Would You Rather...?</h1>
         <p>Please log in with your Google account</p>
         <GoogleLogin
           clientId="576570629915-87hr2jdpq9vi50fjil4ib7k3f02r8ch7.apps.googleusercontent.com"
           buttonText="Login"
-          onSuccess={this.handleLogin}
-          onFailure={this.responseGoogle}/>
-      </div>
+          onSuccess={handleLogin}
+          onFailure={responseGoogle}/>
+      </Container>
     )
-  }
 }
 
 function mapStateToProps({ users }){

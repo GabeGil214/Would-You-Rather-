@@ -5,6 +5,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+    height: '90vh'
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -61,6 +62,18 @@ const useStyles = makeStyles(theme => ({
     }),
     marginLeft: 0,
   },
+  center: {
+    textAlign: 'center',
+  },
+  spaceBetween: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  middle: {
+    position: 'relative',
+    top: '40%',
+    textAlign: 'center',
+  }
 }));
 
 export default useStyles;

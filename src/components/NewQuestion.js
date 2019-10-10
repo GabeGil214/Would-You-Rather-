@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
 import { Redirect } from 'react-router-dom'
+import Container from '@material-ui/core/Container';
 
 class NewQuestion extends Component {
   state = {
@@ -46,8 +47,8 @@ class NewQuestion extends Component {
     }
 
     return (
-      <div>
-        <div className="new-question-container">
+      <Container maxWidth="sm">
+        <div>
           <div className="new-question-title">
             <h2>Would You Rather...</h2>
           </div>
@@ -83,7 +84,7 @@ class NewQuestion extends Component {
             </button>
           </form>
         </div>
-      </div>
+      </Container>
     )
   }
 }
