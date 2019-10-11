@@ -43,7 +43,7 @@ function Question(props) {
 
 
     return (
-        <Card>
+        <Card className={classes.card}>
             {!preview
               ?
               <CardContent>

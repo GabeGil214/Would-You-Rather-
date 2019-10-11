@@ -24,6 +24,13 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  card: {
+    marginBottom: theme.spacing(2),
+  },
+  userCard: {
+    marginBottom: theme.spacing(2),
+    border: '2px green solid'
+  },
   hide: {
     display: 'none',
   },

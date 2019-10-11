@@ -14,9 +14,9 @@ import useStyles from '../styles'
      const { name, avatarURL, votes, questions, currentUser } = user
      const classes = useStyles();
 
-     let containerClass = "profile-container"
+     let containerClass = classes.card
      if(currentUser){
-       containerClass += " currentUser"
+       containerClass = classes.userCard
      }
 
      return (

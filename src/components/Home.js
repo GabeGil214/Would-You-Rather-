@@ -3,6 +3,7 @@ import Question from './Question'
 import { connect } from 'react-redux'
 import { formatQuestion } from '../utils/helpers'
 import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button'
 
 class Home extends Component {
   state = {
@@ -29,14 +30,14 @@ class Home extends Component {
         <Container maxWidth="sm">
           <div className="questionToggle">
             {!answered
-              ? <button className="btn"
+              ? <Button
                 onClick={this.toggleState}
-                >View Answered Questions</button>
-              : <button className="btn"
+                >View Answered Questions</Button>
+              : <Button
                 onClick={this.toggleState}
-                >View Unanswered Questions</button>
+                >View Unanswered Questions</Button>
             }
-          </div>    
+          </div>
           {answered
           ? this.props.answeredIds.map((id) => (
             <Question

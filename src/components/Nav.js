@@ -15,8 +15,9 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
+import HomeIcon from '@material-ui/icons/Home';
+import HelpIcon from '@material-ui/icons/Help';
 import Divider from '@material-ui/core/Divider';
 import '../Nav.css'
 
@@ -61,15 +62,15 @@ function Nav(props) {
         <Divider />
         <List>
           <ListItem button key='Home'>
-            <ListItemIcon><MailIcon /></ListItemIcon>
+            <ListItemIcon><HomeIcon /></ListItemIcon>
             <NavLink to="/" exact activeClassName="active">Home</NavLink>
           </ListItem>
           <ListItem button key='New Question'>
-            <ListItemIcon><InboxIcon /></ListItemIcon>
+            <ListItemIcon><HelpIcon /></ListItemIcon>
             <NavLink to="/add" activeClassName="active">New question</NavLink>
           </ListItem>
           <ListItem button key='Leaderboard'>
-            <ListItemIcon><MailIcon /></ListItemIcon>
+            <ListItemIcon><FormatListNumberedIcon /></ListItemIcon>
             <NavLink to="/leaderboard" activeClassName="active">Leaderboard</NavLink>
           </ListItem>
         </List>
