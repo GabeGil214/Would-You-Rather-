@@ -48,7 +48,8 @@ function Question(props) {
               ?
               <CardContent>
                 <CardHeader
-                  title="Would You Rather..."/>
+                  title="Would You Rather..."
+                  className={classes.center}/>
                 <Typography variant="subtitle1">Submitted By:</Typography>
                 <img src={avatar} height='50' width='50' alt={name}/>
                 <div>
@@ -106,8 +107,8 @@ function Question(props) {
             </CardContent>
           : <CardContent>
                 <Link class={classes.noLink} to={`/question/${id}`}>
-                  <div>
-                    <Typography variant="h4">Would You Rather...</Typography>
+                  <div className={classes.center}>
+                    <Typography  variant="h4">Would You Rather...</Typography>
                     <Typography variant="subtitle1">{content.A} <span>OR</span> {content.B}</Typography>
                     <Typography variant="subtitle1">Total Votes: {votes.totalVotes}</Typography>
                   </div>

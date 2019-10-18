@@ -15,6 +15,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
 import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
 import HomeIcon from '@material-ui/icons/Home';
 import HelpIcon from '@material-ui/icons/Help';
@@ -63,15 +64,15 @@ function Nav(props) {
         <List>
           <ListItem button key='Home'>
             <ListItemIcon><HomeIcon /></ListItemIcon>
-            <NavLink to="/" exact activeClassName="active">Home</NavLink>
+            <NavLink to="/" exact activeClassName="active"><Button>Home</Button></NavLink>
           </ListItem>
           <ListItem button key='New Question'>
             <ListItemIcon><HelpIcon /></ListItemIcon>
-            <NavLink to="/add" activeClassName="active">New question</NavLink>
+            <NavLink to="/add" activeClassName="active"><Button>New question</Button></NavLink>
           </ListItem>
           <ListItem button key='Leaderboard'>
             <ListItemIcon><FormatListNumberedIcon /></ListItemIcon>
-            <NavLink to="/leaderboard" activeClassName="active">Leaderboard</NavLink>
+            <NavLink to="/leaderboard" activeClassName="active"><Button>Leaderboard</Button></NavLink>
           </ListItem>
         </List>
       </Fragment>

@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     display: 'none',
   },
   noLink: {
-    color: theme.color,
+    color: '#222',
     textDecoration: 'none',
   },
   drawer: {
