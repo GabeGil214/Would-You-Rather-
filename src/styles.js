@@ -80,7 +80,47 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     top: '40%',
     textAlign: 'center',
+  },
+  answers: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  answer: {
+    flexBasis: '20%',
+    flexGrow: '1',
+    margin: '1rem',
+    textAlign: 'center'
+  },
+  likeButton: {
+    display: 'flex',
+    flexBasis: '40%',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  author: {
+    display: 'flex',
+    flexBasis: '40%',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginBottom: '2rem'
+  },
+  containerCenter: {
+    display: 'flex',
+    textAlign: 'center',
+    justifyContent: 'column',
+    alignItems: 'center'
+  },
+  newQuestions: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  newQuestion: {
+    flexBasis: '25%',
+    margin: '1rem'
   }
+
 }));
 
 export default useStyles;

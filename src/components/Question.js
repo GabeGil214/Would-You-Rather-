@@ -49,12 +49,9 @@ function Question(props) {
               <CardContent>
                 <CardHeader
                   title="Would You Rather..."
-                  className={classes.center}/>
-                <Typography variant="subtitle1">Submitted By:</Typography>
-                <img src={avatar} height='50' width='50' alt={name}/>
-                <div>
-                  <div className="answer-container answerA">
-                    <Typography variant="subtitle1">{votes.A}</Typography>
+                  className={classes.containerCenter}/>
+                <div className={classes.answers}>
+                  <div className={classes.answer}>
                     {response === 'A'
                       ? <Fragment>
                       <Button
@@ -77,8 +74,7 @@ function Question(props) {
                   </Button>
                   }
                   </div>
-                  <div className="answer-container answerB">
-                    <Typography variant="subtitle1">{votes.B}</Typography>
+                  <div className={classes.answer}>
                     {response === 'B'
                       ? <Fragment>
                       <Button
@@ -102,8 +98,14 @@ function Question(props) {
                   }
                 </div>
               </div>
-              <Typography variant="subtitle2">Likes: {likes}</Typography>
-              <Button variant ="contained" color="primary" onClick={handleLike}>Like</Button>
+              <div className={classes.author}>
+                <Typography variant="subtitle1">Submitted By:</Typography>
+                <img src={avatar} height='50' width='50' alt={name}/>
+              </div>
+              <div className={classes.likeButton}>
+                <Button variant ="contained" color="primary" onClick={handleLike}>Like</Button>
+                <Typography variant="subtitle2">Likes: {likes}</Typography>
+              </div>
             </CardContent>
           : <CardContent>
                 <Link class={classes.noLink} to={`/question/${id}`}>

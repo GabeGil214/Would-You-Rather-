@@ -1,46 +1,40 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
 import { Redirect } from 'react-router-dom'
 import Container from '@material-ui/core/Container';
+import useStyles from '../styles';
+import Card from '@material-ui/core/Card'
+import Button from '@material-ui/core/Button'
 
-class NewQuestion extends Component {
-  state = {
-    textA: '',
-    textB: '',
-    toHome: false
-  }
-  handleChange = (e) => {
+function NewQuestion(props) {
+  const [textA, setTextA] = useState('');
+  const [textB, setTextB] = useState('');
+  const [toHome, setToHome] = useState(false);
+  const classes = useStyles();
+
+  function handleChange(e) {
     const name = e.target.name
     const text = e.target.value
     if(name === 'textA'){
-      this.setState({
-        textA: text
-      })
+      setTextA(text)
     } else {
-      this.setState({
-        textB: text
-      })
+      setTextB(text)
     }
 
   }
-  handleSubmit = (e) => {
-    e.preventDefault()
 
-    const { textA, textB } = this.state
-    const { dispatch, id } = this.props
+  function handleSubmit(e) {
+    e.preventDefault()
+    const { dispatch, id } = props
 
     //todo: add question to createStore
     dispatch(handleAddQuestion(textA, textB, id))
 
-    this.setState({
-      textA: '',
-      textB: '',
-      toHome: true
-    })
+    setTextA('');
+    setTextB('');
+    setToHome(true);
   }
-  render(){
-    const { textA, textB, toHome }  = this.state
 
     if (toHome === true) {
       return <Redirect to='/' />
@@ -48,45 +42,47 @@ class NewQuestion extends Component {
 
     return (
       <Container maxWidth="sm">
-        <div>
-          <div className="new-question-title">
+        <Card>
+          <div className={classes.center}>
             <h2>Would You Rather...</h2>
           </div>
-          <form onSubmit={this.handleSubmit}>
-            <div className='new-question'>
-              <div>
+          <form
+            onSubmit={handleSubmit}
+            >
+            <div className={classes.newQuestions}>
+              <div className={classes.newQuestion}>
                 <textarea
                   name="textA"
                   placeholder="..win $5 million now?"
                   value={textA}
-                  onChange={this.handleChange}
+                  onChange={handleChange}
                   className='textarea'
                   maxLength={180}>
                 </textarea>
               </div>
               <p><strong>Or...</strong></p>
-              <div>
+              <div className={classes.newQuestion}>
                 <textarea
                   name="textB"
                   placeholder="...$10,000 every week for life?"
                   value={textB}
-                  onChange={this.handleChange}
+                  onChange={handleChange}
                   className='textarea'
                   maxLength={180}>
                 </textarea>
               </div>
             </div>
-            <button
-              className="btn"
-              type="submit"
-              >
-              Add Question
-            </button>
+            <div className={classes.likeButton}>
+              <Button
+                type="submit"
+                >
+                Add Question
+              </Button>
+            </div>
           </form>
-        </div>
+        </Card>
       </Container>
     )
-  }
 }
 
 export default connect()(NewQuestion)
