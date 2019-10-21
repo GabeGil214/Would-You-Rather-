@@ -9,7 +9,8 @@ function Login(props) {
   const classes = useStyles();
 
   function responseGoogle(response) {
-    alert(response)
+    alert(response.details)
+    console.log(response)
   }
 
   function handleLogin(response) {
